@@ -1,3 +1,4 @@
+
 <?php
 
 include_once $_SERVER['DOCUMENT_ROOT'] .  '/includes/magicquotes.inc.php';
@@ -12,7 +13,7 @@ if (!userIsLoggedIn())
   exit();
 }
 
-if (!userHasRole'Account Administrator'))
+if (!userHasRole('Account Administrator'))
 {
   $error = 'Only Account Administrators may access this page.';
   include '../accessdenied.html.php';

@@ -23,6 +23,6 @@
 	<input type="submit" value="Log in">
       </div>
     </form>
-    <p><a href="/runhub/">Return to Runhub home</a></p>
+    <p><a href="/~cmonta/runhub/">Return to Runhub home</a></p>
   </body>
 </html>
