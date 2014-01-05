@@ -8,7 +8,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/dbrunhub.inc.php';
 
 try
 {
-  $result = $pdo->query('SELECT event.id as eventid, event.location as eventlocation, event.distance as eventdistance, member.name as membername FROM event JOIN eventmember  ON (event.id = eventmember.eventid) JOIN member  ON (eventmember.memberid = member.id)');
+  $result = $pdo->query('SELECT e.id as eventid, e.location as eventlocation, e.distance as eventdistance, count(em.memberid) as count FROM eventmember as em RIGHT JOIN event as e ON em.eventid=e.id LEFT JOIN member as m ON (m.id=em.memberid) GROUP BY em.eventid ORDER BY count DESC;');
 }
 
 catch (PDOException $e)
@@ -20,7 +20,7 @@ catch (PDOException $e)
 
 foreach ($result as $row)
 {
-  $eventsmembers[] = array('eventid' => $row['eventid'], 'eventlocation' => $row['eventlocation'], 'eventdistance' => $row['eventdistance'], 'membername' => $row['membername']);
+  $eventsmembers[] = array('eventid' => $row['eventid'], 'eventlocation' => $row['eventlocation'], 'eventdistance' => $row['eventdistance'], 'count' => $row['count']);
 }
 
 
